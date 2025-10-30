@@ -70,7 +70,16 @@
 }
 
 /* Scrollbar stabil & feel */
-html,body{ overflow-y:scroll; scrollbar-gutter:stable both-edges; overscroll-behavior: contain; }
+html, body{
+  overflow-y:auto;                /* jangan pakai 'scroll' agar tidak memaksa gutter */
+  overscroll-behavior: contain;
+  -ms-overflow-style: none;       /* IE/Edge lama */
+  scrollbar-width: none;          /* Firefox */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  width:0; height:0; display:none; /* WebKit */
+}
 
 /* Matikan anim sesaat saat swap */
 .nojump, .nojump *{ transition:none !important; animation:none !important; }
